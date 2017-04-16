@@ -21,5 +21,10 @@ namespace BLL
         {
            return Dal.GetList();
         }
+
+        public Task<int> Update(UserInfo userInfo)
+        {
+            return Dal.Update(userInfo);
+        }
     }
 }
