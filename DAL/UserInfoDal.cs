@@ -43,14 +43,14 @@ namespace DAL
         //}
         public async Task<IEnumerable<UserInfo>> GetList()
         {
-            string sql = "select * from user_info where username=@UserName";
+            string sql = "select * from JH_userinfo where username=@UserName";
             var list = await DapperHelper.QueryAsync<UserInfo>(sql, new {UserName="tianmeng"});
             return list;
         }
 
         public async Task<int> Update(UserInfo userInfo)
         {
-            string sql = "UPDATE user_info SET password = @password WHERE username = @username";
+            string sql = "UPDATE JH_userinfo SET password = @password WHERE username = @username";
             return await DapperHelper.ExecuteAsync(sql, userInfo);
         }
     }

@@ -12,7 +12,7 @@ namespace DAL
     
     public static class DapperHelper 
     {
-        private static readonly string conStr = @"Server=localhost;Database=jinhe;Uid=root;Pwd=tianmeng";
+        private static readonly string conStr = @"Server=bdm275070332.my3w.com;Database=bdm275070332_db;Uid=bdm275070332;Pwd=pspgbcong";
         /// <summary>
         /// 查询数据库
         /// </summary>
