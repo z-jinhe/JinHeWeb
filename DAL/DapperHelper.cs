@@ -10,9 +10,9 @@ using MySql.Data.MySqlClient;
 namespace DAL
 {
     
-    public static class DapperHelper
+    public static class DapperHelper 
     {
-        private static readonly string ConStr =System.Configuration.ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;//@"Server=bdm275070332.my3w.com;Database=bdm275070332_db;Uid=bdm275070332;Pwd=pspgbcong";
+        private static readonly string conStr = @"Server=bdm275070332.my3w.com;Database=bdm275070332_db;Uid=bdm275070332;Pwd=pspgbcong";
         /// <summary>
         /// 查询数据库
         /// </summary>
@@ -23,7 +23,7 @@ namespace DAL
         public static async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param ) where T:class
         {
             IEnumerable<T> list;
-            using (IDbConnection con = new MySqlConnection (ConStr))
+            using (IDbConnection con = new MySqlConnection (conStr))
             {
                 con.Open();
                 list =await con.QueryAsync<T>(sql,param);
@@ -34,7 +34,7 @@ namespace DAL
         public static async  Task<int> ExecuteAsync(string sql,object param)
         {
             int r;
-            using (IDbConnection con = new MySqlConnection(ConStr))
+            using (IDbConnection con = new MySqlConnection(conStr))
             {
                 con.Open();
                 r = await con.ExecuteAsync(sql, param);
