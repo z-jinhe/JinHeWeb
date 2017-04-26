@@ -10,12 +10,12 @@ namespace JinHeMilk.Controllers
 {
     public class HomeController : Controller
     {
-        UserInfoSevice Bll = new UserInfoSevice();
+        readonly UserInfoSevice _bll = new UserInfoSevice();
         public  ActionResult Index()
         {
             
             ViewBag.Title = "Home Page";
-            var list = Bll.GetList().Result;
+            var list = _bll.GetList().Result;
             ViewBag.UserList = list;
             
             return View();
@@ -24,7 +24,7 @@ namespace JinHeMilk.Controllers
         public ActionResult Update()
         {
            string password = Request["password"];
-           var r =  Bll.Update(new UserInfo{Password = password,UserName = "tianmeng"});
+           var r =  _bll.Update(new UserInfo{Password = password,UserName = "tianmeng"});
            return Json(r.Result);
         }
     }
