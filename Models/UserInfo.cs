@@ -22,5 +22,10 @@ namespace Models
         /// 密码
         /// </summary>
         public string Password { get; set; }
+        /// <summary>
+        /// 微信唯一标示
+        /// </summary>
+
+        public string UnionId { get; set; }
     }
 }

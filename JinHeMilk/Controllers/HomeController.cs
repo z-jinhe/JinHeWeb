@@ -8,16 +8,19 @@ using Models;
 
 namespace JinHeMilk.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         UserInfoSevice Bll = new UserInfoSevice();
         public  ActionResult Index()
         {
             
             ViewBag.Title = "Home Page";
+            ViewBag.Name = "zhangsan";
+            ViewBag.Age = 14;
+            ViewBag.Height = 131;
             var list = Bll.GetList().Result;
             ViewBag.UserList = list;
-            
+
             return View();
         }
 

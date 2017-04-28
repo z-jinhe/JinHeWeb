@@ -12,7 +12,7 @@ namespace DAL
     
     public static class DapperHelper 
     {
-        private static readonly string conStr = @"Server=bdm275070332.my3w.com;Database=bdm275070332_db;Uid=bdm275070332;Pwd=pspgbcong";
+        private static readonly string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
         /// <summary>
         /// 查询数据库
         /// </summary>
@@ -30,7 +30,7 @@ namespace DAL
             }
             return list;
         }
-
+     
         public static async  Task<int> ExecuteAsync(string sql,object param)
         {
             int r;

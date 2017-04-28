@@ -21,6 +21,24 @@ namespace BLL
         {
            return Dal.GetList();
         }
+        /// <summary>
+        ///批量添加用户
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool AddUserInfos(IEnumerable<UserInfo> list)
+        {
+            return true;
+        }
+        /// <summary>
+        /// 查询id或者用户名单个用户
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public Task<IEnumerable<UserInfo>> GetUserInfo( UserInfo userInfo)
+        {
+            return Dal.GetUserInfo(userInfo);
+        }
 
         public Task<int> Update(UserInfo userInfo)
         {

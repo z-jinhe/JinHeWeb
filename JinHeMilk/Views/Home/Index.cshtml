@@ -12,29 +12,33 @@
     <title>主页</title>
 </head>
 <body>
-    @{
-        foreach (UserInfo item in ViewBag.UserList)
-        {
+    c测试编码类型ddd
+@{
+    foreach (UserInfo item in ViewBag.UserList)
+    {
 
-            <div>
-                @(item.UserName)
-            </div>
-            <div>
-                @(item.Password)
-            </div>
-        }
+        <div>
+            @(item.UserName)
+        </div>
+        <div>
+            @(item.Password)
+        </div>
     }
+}
 <input type="text" name="password" id="password" value=""/>
 <input type="button" name="submit" id="submit" value="提交"/>
 <script>
     var submit = $('#submit');
-    submit.on('click', function() {
-        $.post('/Home/Update', {
-            password: $('#password').val()
-    }, function(data) {
-            console.debug(data);
+    submit.on('click',
+        function() {
+            $.post('/Home/Update',
+                {
+                    password: $('#password').val()
+                },
+                function(data) {
+                    console.debug(data);
+                });
         });
-    });
 </script>
 </body>
 </html>

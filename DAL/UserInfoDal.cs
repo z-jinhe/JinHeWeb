@@ -47,7 +47,33 @@ namespace DAL
             var list = await DapperHelper.QueryAsync<UserInfo>(sql, new {UserName="tianmeng"});
             return list;
         }
+        /// <summary>
+        /// 根据用户名或者用户id查找对应的用户
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<UserInfo>> GetUserInfo(UserInfo userInfo)
+        {
+            string sql;
+            IEnumerable<UserInfo> userList;
+            if (userInfo.Id > 0)
+            {
+                sql = "select * from JH_userinfo where Id=@Id";
+                userList = await DapperHelper.QueryAsync<UserInfo>(sql, new { Id = userInfo.Id });
+            }
+            else if(!string.IsNullOrWhiteSpace(userInfo.UnionId))
+            {
+                sql = "select * from JH_userinfo where UnionId=@UnionId";
+                userList = await DapperHelper.QueryAsync<UserInfo>(sql, new { UnionId = userInfo.UnionId });
+            }
+            else
+            {
+                return null;
+            }
 
+
+            return userList;
+        }
         public async Task<int> Update(UserInfo userInfo)
         {
             string sql = "UPDATE JH_userinfo SET password = @password WHERE username = @username";
