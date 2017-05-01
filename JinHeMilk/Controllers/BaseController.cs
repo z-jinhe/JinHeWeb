@@ -1,12 +1,10 @@
-﻿using ClaySharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CommonHelper;
-using JinHeMilk.Models;
 using Models;
 
 namespace JinHeMilk.Controllers
@@ -37,16 +35,9 @@ namespace JinHeMilk.Controllers
 
             }
             //按照参数名排序
-            dic=dic.OrderBy(i => i.Key) as Dictionary<string,string>;
-            var content = "";
-            foreach (var item in dic)
-            {
-                if (item.Key == "sign")
-                {
-                    continue;
-                }
-                content += item.Key + item.Value;
-            }
+            dic=dic.OrderBy(i => i.Key).ToDictionary(k => k.Key, v => v.Value);
+            
+            var content = dic.Where(item => item.Key != "sign").Aggregate("", (current, item) => current + (item.Key + item.Value));
             var secretKey = System.Configuration.ConfigurationManager.AppSettings["secretKey"];//拼接待签名的字符串和秘钥
             content = secretKey + content + secretKey;
             //计算Md5
