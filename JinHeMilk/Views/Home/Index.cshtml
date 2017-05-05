@@ -1,33 +1,34 @@
-﻿@{
+﻿@using Models
+@{
     Layout = null;
 }
-@using Models
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <title>主页</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 <body>
     c测试编码类型ddd
-@{
-    foreach (UserInfo item in ViewBag.UserList)
-    {
+    @{
+        foreach (UserInfo item in ViewBag.UserList)
+        {
 
-        <div>
-            @(item.UserName)
-        </div>
-        <div>
-            @(item.Password)
-        </div>
+            <div>
+                @(item.UserName)
+            </div>
+            <div>
+                @(item.Password)
+            </div>
+        }
     }
-}
-<input type="text" name="password" id="password" value=""/>
-<input type="button" name="submit" id="submit" value="提交"/>
-<script>
+    <input type="text" name="password" id="password" value="" />
+    <input type="button" name="submit" id="submit" value="提交" />
+    <script>
     var submit = $('#submit');
     submit.on('click',
         function() {
@@ -39,6 +40,6 @@
                     console.debug(data);
                 });
         });
-</script>
+    </script>
 </body>
 </html>
