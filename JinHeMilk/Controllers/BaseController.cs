@@ -18,6 +18,9 @@ namespace JinHeMilk.Controllers
         {
             //CheckLogin();//检测是否已经登录
             CheckSign();//检测签名是否正确
+
+
+
         }
         /// <summary>
         /// 检测签名是否正确

@@ -8,7 +8,7 @@ using Models;
 
 namespace JinHeMilk.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         readonly UserInfoSevice _bll = new UserInfoSevice();
         public  ActionResult Index()
@@ -17,6 +17,7 @@ namespace JinHeMilk.Controllers
             ViewBag.Title = "Home Page";
             var list = _bll.GetList().Result;
             ViewBag.UserList = list;
+            
             return View();
         }
 
@@ -25,10 +26,6 @@ namespace JinHeMilk.Controllers
            string password = Request["password"];
            var r =  _bll.Update(new UserInfo{Password = password,UserName = "tianmeng"});
            return Json(r.Result);
-        }
-        public ActionResult Test()
-        {
-            return View();
         }
     }
 }
