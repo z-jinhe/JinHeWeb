@@ -13,6 +13,7 @@ namespace JinHeMilk
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
