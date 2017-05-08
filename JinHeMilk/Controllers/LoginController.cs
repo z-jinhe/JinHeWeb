@@ -20,6 +20,7 @@ namespace JinHeMilk.Controllers
         /// <returns></returns>
         public ActionResult Login()
         {
+            
             var unionid = Request["unionid"] ; //微信唯一标示
             var username = Request["username"]; //用户昵称即用户名(可重复)
             if (CommonHelper.Check.ParamsHasNullOrWhiteSpaceValue(new Dictionary<string, string>(){{"id", unionid },{"username",username}})|| (unionid.Substring(0,4)!="UID_"))//用户昵称和id有空或者null值

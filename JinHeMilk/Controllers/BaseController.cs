@@ -14,10 +14,10 @@ namespace JinHeMilk.Controllers
      
         public BaseController()
         {
+
             //CheckLogin();//检测是否已经登录
             CheckSign();//检测签名是否正确
-
-
+            
 
         }
         /// <summary>
@@ -25,6 +25,7 @@ namespace JinHeMilk.Controllers
         /// </summary>
         private void CheckSign()
         {
+            
             Dictionary<string ,string >dic=new Dictionary<string, string>();
             var form = System.Web.HttpContext.Current.Request.Form;//取出所有参数和值
             if(form.Count<=0) return;
@@ -71,5 +72,6 @@ namespace JinHeMilk.Controllers
                 LoginUser.LoginUserInfo = new UserInfo() { Id = userId, UserName = userName };
             }
         }
+
     }
 }
