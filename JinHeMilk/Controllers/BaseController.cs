@@ -53,7 +53,7 @@ namespace JinHeMilk.Controllers
         /// <summary>
         /// 检测是否已经登录
         /// </summary>
-        private void CheckLogin()
+        private async void CheckLogin()
         {
             int userId = Convert.ToInt32(Request["userid"]);
 
@@ -63,8 +63,9 @@ namespace JinHeMilk.Controllers
             if (userId > 0)
             {
                 var userName = Request["userName"];
-                var userList = new BLL.UserInfoSevice().GetUserInfo(new UserInfo() { Id = userId }).Result.ToList();
-                if (userList.Count <= 0 || userName != userList[0].UserName)//用户id和用户名不匹配,返回错误原因,并重新登录
+                var userList  = await new BLL.UserInfoSevice().GetUserInfoAsync(new UserInfo() { Id = userId });
+                var userInfos = userList as UserInfo[] ?? userList.ToArray();
+                if (!userInfos.Any() || userName !=  userInfos[0].UserName)//用户id和用户名不匹配,返回错误原因,并重新登录
                 {
                     Response.Write(Newtonsoft.Json.JsonConvert.SerializeObject(new CommonHelper.ResponseData() { Status = -2, ErrorMsg = "用户不存在,请重新登录!", Data = null }));
                     return;

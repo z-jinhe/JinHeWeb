@@ -29,10 +29,11 @@
     <input type="text" name="password" id="password" value="" />
     <input type="button" name="submit" id="submit" value="提交" />
     <script>
-    var submit = $('#submit');
-    submit.on('click',
-        function() {
-            $.post('/Home/Update',
+        var submit = $('#submit');
+        submit.on('click',
+            function() {
+                alert();
+                $.post('/Home/Update',
                 {
                     password: $('#password').val()
                 },

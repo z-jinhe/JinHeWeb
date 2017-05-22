@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BLL;
@@ -12,21 +13,22 @@ namespace JinHeMilk.Controllers
     {
         
         readonly UserInfoSevice _bll = new UserInfoSevice();
-        public ActionResult Index()
+        public async Task< ActionResult>  Index()
         {
 
             ViewBag.Title = "Home Page";
-            var list = _bll.GetList().Result;
+            var task = await _bll.GetListAsync();
+            var list = task;
             ViewBag.UserList = list;
-            return View();
+            return  View();
         }
 
-        public ActionResult Update()
+        public async Task<ActionResult> Update()
         {
             string password = Request["password"];
-            var r = _bll.Update(new UserInfo { Password = password, UserName = "tianmeng" });
+            var r = await _bll.UpdateAsync(new UserInfo { Password = password, UserName = "tianmeng" });
             
-            return this.JsonNet(r.Result);
+            return this.JsonNet(r);
            
         }
     }

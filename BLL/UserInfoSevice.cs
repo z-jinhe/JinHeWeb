@@ -17,32 +17,32 @@ namespace BLL
         }
         private  UserInfoDal Dal { get; set; }
 
-        public Task<IEnumerable<UserInfo>> GetList()
+        public async  Task<IEnumerable<UserInfo>> GetListAsync()
         {
-           return Dal.GetList();
+           return await Dal.GetListAsync();
         }
         /// <summary>
         ///批量添加用户
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public bool AddUserInfos(IEnumerable<UserInfo> list)
+        public async Task< bool> AddUserInfosAsync(IEnumerable<UserInfo> list)
         {
-            return true;
+            return  true;
         }
         /// <summary>
         /// 查询id或者用户名单个用户
         /// </summary>
         /// <param name="userInfo"></param>
         /// <returns></returns>
-        public Task<IEnumerable<UserInfo>> GetUserInfo( UserInfo userInfo)
+        public async Task<IEnumerable<UserInfo>> GetUserInfoAsync( UserInfo userInfo)
         {
-            return Dal.GetUserInfo(userInfo);
+            return  await Dal.GetUserInfoAsync(userInfo);
         }
 
-        public Task<int> Update(UserInfo userInfo)
+        public async Task<int> UpdateAsync(UserInfo userInfo)
         {
-            return Dal.Update(userInfo);
+            return await Dal.UpdateAsync(userInfo);
         }
     }
 }

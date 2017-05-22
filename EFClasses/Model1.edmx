@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="JH_CategorysSet1" EntityType="Model1.Store.JH_CategorysSet1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JH_GoodsSet1" EntityType="Model1.Store.JH_GoodsSet1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JH_ReviewsSet" EntityType="Model1.Store.JH_ReviewsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JH_DetailSet" EntityType="Model1.Store.JH_DetailSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JH_BackGroundUserSet" EntityType="Model1.Store.JH_BackGroundUserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JH_UserInfoSet" EntityType="Model1.Store.JH_UserInfoSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryGoods" Association="Model1.Store.CategoryGoods">
+      <End Role="Category" EntitySet="JH_CategorysSet1" />
+      <End Role="Goods" EntitySet="JH_GoodsSet1" />
+    </AssociationSet>
+    <AssociationSet Name="GoodsReviews" Association="Model1.Store.GoodsReviews">
+      <End Role="Goods" EntitySet="JH_GoodsSet1" />
+      <End Role="Reviews" EntitySet="JH_ReviewsSet" />
+    </AssociationSet>
+    <AssociationSet Name="GoodsDetail" Association="Model1.Store.GoodsDetail">
+      <End Role="Goods" EntitySet="JH_GoodsSet1" />
+      <End Role="Detail" EntitySet="JH_DetailSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="JH_CategorysSet1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Del" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JH_GoodsSet1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Del" Type="bit" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JH_ReviewsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Del" Type="bit" Nullable="false" />
+    <Property Name="Goods_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JH_DetailSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MainPic" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Del" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Goods_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JH_BackGroundUserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Del" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JH_UserInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UnionId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoryGoods">
+    <End Role="Category" Type="Model1.Store.JH_CategorysSet1" Multiplicity="1" />
+    <End Role="Goods" Type="Model1.Store.JH_GoodsSet1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GoodsReviews">
+    <End Role="Goods" Type="Model1.Store.JH_GoodsSet1" Multiplicity="1" />
+    <End Role="Reviews" Type="Model1.Store.JH_ReviewsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="Goods_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GoodsDetail">
+    <End Role="Goods" Type="Model1.Store.JH_GoodsSet1" Multiplicity="1" />
+    <End Role="Detail" Type="Model1.Store.JH_DetailSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="Goods_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JH_CategorysSet1" EntityType="Model1.JH_Categorys" />
+          <EntitySet Name="JH_GoodsSet1" EntityType="Model1.JH_Goods" />
+          <AssociationSet Name="CategoryGoods" Association="Model1.CategoryGoods">
+            <End Role="Category" EntitySet="JH_CategorysSet1" />
+            <End Role="Goods" EntitySet="JH_GoodsSet1" />
+          </AssociationSet>
+          <EntitySet Name="JH_ReviewsSet" EntityType="Model1.JH_Reviews" />
+          <AssociationSet Name="GoodsReviews" Association="Model1.GoodsReviews">
+            <End Role="Goods" EntitySet="JH_GoodsSet1" />
+            <End Role="Reviews" EntitySet="JH_ReviewsSet" />
+          </AssociationSet>
+          <EntitySet Name="JH_DetailSet" EntityType="Model1.JH_Detail" />
+          <AssociationSet Name="GoodsDetail" Association="Model1.GoodsDetail">
+            <End Role="Goods" EntitySet="JH_GoodsSet1" />
+            <End Role="Detail" EntitySet="JH_DetailSet" />
+          </AssociationSet>
+          <EntitySet Name="JH_BackGroundUserSet" EntityType="Model1.JH_BackGroundUser" />
+          <EntitySet Name="JH_UserInfoSet" EntityType="Model1.JH_UserInfo" />
+        </EntityContainer>
+        <EntityType Name="JH_Categorys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Model1.CategoryGoods" FromRole="Category" ToRole="Goods" />
+          <Property Name="CreateTime" Type="String" Nullable="false" />
+          <Property Name="UpdateTime" Type="String" Nullable="false" />
+          <Property Name="DelTime" Type="String" Nullable="false" />
+          <Property Name="Del" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JH_Goods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Model1.CategoryGoods" FromRole="Goods" ToRole="Category" />
+          <NavigationProperty Name="Reviews" Relationship="Model1.GoodsReviews" FromRole="Goods" ToRole="Reviews" />
+          <Property Name="CreateTime" Type="String" Nullable="false" />
+          <Property Name="UpdateTime" Type="String" Nullable="false" />
+          <NavigationProperty Name="Detail" Relationship="Model1.GoodsDetail" FromRole="Goods" ToRole="Detail" />
+          <Property Name="DelTime" Type="String" Nullable="false" />
+          <Property Name="Del" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="CategoryGoods">
+          <End Type="Model1.JH_Categorys" Role="Category" Multiplicity="1" />
+          <End Type="Model1.JH_Goods" Role="Goods" Multiplicity="*" />
+        </Association>
+        <EntityType Name="JH_Reviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <Property Name="GId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Model1.GoodsReviews" FromRole="Reviews" ToRole="Goods" />
+          <Property Name="CreateTime" Type="String" Nullable="false" />
+          <Property Name="UpdateTime" Type="String" Nullable="false" />
+          <Property Name="DelTime" Type="String" Nullable="false" />
+          <Property Name="Del" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="GoodsReviews">
+          <End Type="Model1.JH_Goods" Role="Goods" Multiplicity="1" />
+          <End Type="Model1.JH_Reviews" Role="Reviews" Multiplicity="*" />
+        </Association>
+        <EntityType Name="JH_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="MainPic" Type="String" Nullable="false" />
+          <Property Name="GId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Model1.GoodsDetail" FromRole="Detail" ToRole="Goods" />
+          <Property Name="CreateTime" Type="String" Nullable="false" />
+          <Property Name="UpdateTime" Type="String" Nullable="false" />
+          <Property Name="DelTime" Type="String" Nullable="false" />
+          <Property Name="Del" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="GoodsDetail">
+          <End Type="Model1.JH_Goods" Role="Goods" Multiplicity="1" />
+          <End Type="Model1.JH_Detail" Role="Detail" Multiplicity="*" />
+        </Association>
+        <EntityType Name="JH_BackGroundUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="CreateTime" Type="String" Nullable="false" />
+          <Property Name="UpdateTime" Type="String" Nullable="false" />
+          <Property Name="DelTime" Type="String" Nullable="false" />
+          <Property Name="Del" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JH_UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" />
+          <Property Name="UnionId" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="JH_CategorysSet1">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_Categorys)">
+        <MappingFragment StoreEntitySet="JH_CategorysSet1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="Del" ColumnName="Del" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JH_GoodsSet1">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_Goods)">
+        <MappingFragment StoreEntitySet="JH_GoodsSet1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="Del" ColumnName="Del" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JH_ReviewsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_Reviews)">
+        <MappingFragment StoreEntitySet="JH_ReviewsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="Del" ColumnName="Del" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JH_DetailSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_Detail)">
+        <MappingFragment StoreEntitySet="JH_DetailSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="Del" ColumnName="Del" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JH_BackGroundUserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_BackGroundUser)">
+        <MappingFragment StoreEntitySet="JH_BackGroundUserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="Del" ColumnName="Del" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JH_UserInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.JH_UserInfo)">
+        <MappingFragment StoreEntitySet="JH_UserInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UnionId" ColumnName="UnionId" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoryGoods" TypeName="Model1.CategoryGoods" StoreEntitySet="JH_GoodsSet1">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+      <EndProperty Name="Goods">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GoodsReviews" TypeName="Model1.GoodsReviews" StoreEntitySet="JH_ReviewsSet">
+      <EndProperty Name="Goods">
+        <ScalarProperty Name="Id" ColumnName="Goods_Id" />
+      </EndProperty>
+      <EndProperty Name="Reviews">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GoodsDetail" TypeName="Model1.GoodsDetail" StoreEntitySet="JH_DetailSet">
+      <EndProperty Name="Goods">
+        <ScalarProperty Name="Id" ColumnName="Goods_Id" />
+      </EndProperty>
+      <EndProperty Name="Detail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

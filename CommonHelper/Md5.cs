@@ -14,6 +14,7 @@ namespace CommonHelper
 
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             var  bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            md5.Dispose();
             return BitConverter.ToString(bytes).ToUpper().Replace("-", "");
         }
     }
